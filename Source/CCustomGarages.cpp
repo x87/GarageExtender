@@ -1074,7 +1074,7 @@ char CCustomGarage::IsVehicleAcceptByThisTunningGarage(CVehicle* veh)
 	//unsigned long handling_flags = *(DWORD*)( 0xD0 + ((0xC2B9C8 + 0x14) + ((*(WORD*)( *((DWORD*)ARRAY_ModelInfo + veh->__parent.__parent.m_wModelIndex) + 0x4A )) * 0xE0)) );
 	//Goodidea82:
 	DWORD modelIdx = veh->__parent.__parent.m_wModelIndex;
-	unsigned long handling_flags =	*(DWORD*)(0xD0 + ((0xC2B9C8 + 0x14) + ((*(WORD*)(*((DWORD*)ARRAY_ModelInfo + (modelIdx*4)) + 0x4A)) * 0xE0)));
+	unsigned long handling_flags =	*(DWORD*)(0xD0 + ((0xC2B9C8 + 0x14) + ((*(WORD*)(*((DWORD*)ARRAY_ModelInfo + modelIdx) + 0x4A)) * 0xE0)));
 
 	switch(this->gType)
 	{
@@ -1480,7 +1480,7 @@ void CCustomGarage::ProcessSprayGarage()
 						//Platinum Edit:
 						//*(DWORD*)(ARRAY_ModelInfo + veh->__parent.__parent.m_wModelIndex * 4), 0, &c1, &c2, &c3, &c4, 1);
 						//Goodidea82:
-						*(DWORD*)(ARRAY_ModelInfo + modelIdx * 4), 0, &c1, &c2, &c3, &c4, 1);
+						*((DWORD*)ARRAY_ModelInfo + modelIdx), 0, &c1, &c2, &c3, &c4, 1);
 
 					if(veh->primaryColor != c1 || veh->secondaryColor != c2
 					|| veh->tertiaryColor != c3 || veh->quaternaryColor != c4)
